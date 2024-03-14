@@ -86,3 +86,18 @@ a:hover{
 a:active{
     color:#09814A;
 }
+
+
+/* Intro Sectoin */
+.image-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#version-images{
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -15,11 +15,12 @@
     </head>
 
     <body>
-        <h1>Responsive Redesign of Suzanne Collins' Website </h1>
+        <h1>A/B Testing</h1>
         <div class="contents">
             <!-- Description of the Assignment -->
             <p>
-            TODO
+                In this assignment, I ran a simple A/B test on two different UI designs and analyzed the results. 
+                The aim was to draw conclusions on whether a design choice could have reasonably impacted user interaction.
             </p>
             
             <p>
@@ -32,20 +33,71 @@
             <!-- Overview -->
             <div id="Overview" class="assignment-segment">
                 <h2>Overview</h2>
+                <h3>The Designs</h3>
                 <p>
-                    TODO
+                    The UI in question is an online medical portal where users can see and schedule appointments with 
+                    medical providers.
+                    I slightly changed the original UI to create a version B of the site with the aim of making
+                     it easier for users to find the appointment they want and schedule it. To create version B I added  borders around each appointment in the menu to clearly delineate which information belongs to which appointment item, varied the colors of the see appointment and schedule appointment buttons, and changed the button font to black for higher contrast. 
+                    
+                    <div id="version-images">
+                        <div class="image-container">
+                            <img src="assets/ui-version-a.png">
+                            <text>Version A</text>
+                        </div>
+                        <div class="image-container">
+                            <img src="assets/ui-version-b.png">
+                            <text>Version B</text>
+                        </div>
+                    </div>
+                </p>
+                <h3>The Task</h3>
+                <p>
+                    Test participants were asked to complete the following task, "Schedule an appointment with Adam Ng, MD at Morristown Medical 
+                    Center on April 23, 2024." They first attempted this task on Version A of the UI. Then participants attempted the same task on Version B. 
                 </p>
             </div>
 
-            <!-- Design Process (lofi, style guide, hifi) -> need to justify and explain why i made certain decisions-->
-            <div id="Ideation" class="assignment-segment">
-                <h2>Ideation</h2>
+            <div id="Hypotheses" class="assignment-segment">
+                <h2>Hypotheses</h2>
+
+                <h3>Misclick rate</h3>
+                metric: the frequency with which users click something else on the page before finding the correct button for the task<br><br>
+                <p><b>Null hypothesis:</b> Users have the same misclick rate with version A of the site as version B. <br><br>
+                    <b>Alternative hypothesis:</b> Users have a smaller misclick rate when using version B than version A.<br><br>
+                    <b>Predictions:</b> I predict that version B will have a smaller misclick rate, but that it won’t be significant enough to reject the null hypothesis because there are still significant usability flaws in version B.<br><br>
+                    <b>Reasoning:</b> I chose this alternative hypothesis becaues a better design should make it more clear to a user how to book an appointment, so they’ll hopefully have fewer “mistakes” when trying to accomplish their task.
+                    </p><br><br>
+
+                <h3>Time on page</h3>
+                metric: the time spent on the webpage for each user group<br><br>
+                <p>
+                    <b>Null hypothesis:</b> Users spend the same amount of time on version A and version B.<br><br>
+                    <b>Alternative hypothesis:</b> Users spend the more time on version A than on version B.<br><br>
+                    <b>Predictions:</b> I predict that we will fail to reject the null hypothesis, because while there are still design flaws in version B, I think that the slight increase in organization of appointments in the design will significantly increase the efficiency (in terms of time) of booking an appointment.<br><br>
+                    <b>Reasoning:</b> I chose this alternative hypothesis because a better design should allow a user to accomplish their task more quickly. Thus, version A will most likely require more time to find where to book a desired appointment because it is less clear where/how a user can do this based on the design than in version B.
+                </p><br><br>
+
+                <h3>Time to first click</h3>
+                metric: The time (in milliseconds) it takes for the user to execute his/her first click.<br><br>
+                <p> <b>Null hypothesis:</b> The time to first click is the same among users using version A as users using version B.<br><br>
+                    <b>Alternative hypothesis:</b> The time to first click is less in version B than version A.<br><br>
+                    <b>Predictions:</b> I predict that we will fail to reject the null hypothesis, because I’m not confident that click time is a strong enough indicator of the learnability of a site to produce a significant difference between click time in site A and site B.<br><br>
+                    <b>Reasoning:</b> I chose this alternative hypothesis because a better design should allow a user to accomplish their task more quickly. Thus, version A may require more time to find where to book a desired appointment because it is less clear where/how a user can do this based on the design than in version B.
+                    </p><br><br>
+
             </div>
 
-            <div id="Webpage-modification" class="assignment-segment">
-                <h2>Webpage Modification</h2>
-
+            <div id="Statistical Analysis" class="assignment-segment">
                 <h2>Statistical Analysis</h2>
+                For the three measures, I then ran appropriate statistical tests on the data collected from the A participants and the B participants.
+                
+                <h3>Misclick rate</h3>
+
+                <h3>Time on Page</h3>
+
+                <h3>Time to first click</h3>
+
             </div>
 
             <div id="Conclusion" class="assignment-segment">
