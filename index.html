@@ -26,8 +26,9 @@
             <p>
             Jump to: <a variant="nav-link" pr="0" href="#Overview">Overview</a> • 
                     <a variant="nav-link" pr="1" href="#Webpage-modification">Webpage Modification</a> • 
-                    <a variant="nav-link" pr="2" href="#Hypotheses">Hypotheses and Statistical Analysis</a> • 
-                    <a variant="nav-link" pr="3" href="#Conclusion">Conclusion</a> •  
+                    <a variant="nav-link" pr="2" href="#Hypotheses">Hypotheses</a> • 
+                    <a variant="nav-link" pr="3" href="#Statistical-Analysis">Statistical Analysis</a> • 
+                    <a variant="nav-link" pr="4" href="#Conclusion">Conclusion</a>
             </p>
 
             <!-- Overview -->
@@ -54,7 +55,7 @@
                 <h3>The Task</h3>
                 <p>
                     Test participants were asked to complete the following task, "Schedule an appointment with Adam Ng, MD at Morristown Medical 
-                    Center on April 23, 2024." They first attempted this task on Version A of the UI. Then participants attempted the same task on Version B. 
+                    Center on April 23, 2024." They first attempted this task on version A of the UI. Then participants attempted the same task on version B. 
                 </p>
             </div>
 
@@ -62,15 +63,15 @@
                 <h2>Hypotheses</h2>
 
                 <h3>Misclick rate</h3>
-                metric: the frequency with which users click something else on the page before finding the correct button for the task<br><br>
+                metric: the frequency with which users click something else on the page before finding the correct button for the task. Each participant datapoint is either TRUE if they did misclick the page or FALSE if they did not.<br><br>
                 <p><b>Null hypothesis:</b> Users have the same misclick rate with version A of the site as version B. <br><br>
                     <b>Alternative hypothesis:</b> Users have a smaller misclick rate when using version B than version A.<br><br>
                     <b>Predictions:</b> I predict that version B will have a smaller misclick rate, but that it won’t be significant enough to reject the null hypothesis because there are still significant usability flaws in version B.<br><br>
-                    <b>Reasoning:</b> I chose this alternative hypothesis becaues a better design should make it more clear to a user how to book an appointment, so they’ll hopefully have fewer “mistakes” when trying to accomplish their task.
+                    <b>Reasoning:</b> I chose this alternative hypothesis because a better design should make it more clear to a user how to book an appointment, so they’ll hopefully have fewer “mistakes” when trying to accomplish their task.
                     </p><br><br>
 
                 <h3>Time on page</h3>
-                metric: the time spent on the webpage for each user group<br><br>
+                metric: the time spent on the webpage for each user group, in milliseconds<br><br>
                 <p>
                     <b>Null hypothesis:</b> Users spend the same amount of time on version A and version B.<br><br>
                     <b>Alternative hypothesis:</b> Users spend the more time on version A than on version B.<br><br>
@@ -79,7 +80,7 @@
                 </p><br><br>
 
                 <h3>Time to first click</h3>
-                metric: The time (in milliseconds) it takes for the user to execute his/her first click.<br><br>
+                metric: The time in milliseconds it takes for the user to execute his/her first click.<br><br>
                 <p> <b>Null hypothesis:</b> The time to first click is the same among users using version A as users using version B.<br><br>
                     <b>Alternative hypothesis:</b> The time to first click is less in version B than version A.<br><br>
                     <b>Predictions:</b> I predict that we will fail to reject the null hypothesis, because I’m not confident that click time is a strong enough indicator of the learnability of a site to produce a significant difference between click time in site A and site B.<br><br>
@@ -88,19 +89,63 @@
 
             </div>
 
-            <div id="Statistical Analysis" class="assignment-segment">
-                <h2>Statistical Analysis</h2>
-                For the three measures, I then ran appropriate statistical tests on the data collected from the A participants and the B participants.
+            <div id="Statistical-Analysis" class="assignment-segment">
+                <h2>Statistical Tests</h2>
+                For the three measures, I then ran appropriate statistical tests on the data collected from the A participants and the B participants with an alpha level of 0.05.
                 
                 <h3>Misclick rate</h3>
+                <p>I ran a <b>Chi-squares significance test</b> on this metric because the data takes a boolean value. There is 1 degree of freedom, chi^2 = 6.428571429, and the resulting 
+                    p-value is 0.01122988665. The chi^2 value tells us that the observed values differ from the expected values significantly because it exceeds the critical chi^2 value (3.841). 
+                    The p-value is less than the alpha level of 0.05. So the misclick rate is statistically significant and we <b>reject the null hypothesis</b>.
+                </p>
 
                 <h3>Time on Page</h3>
+                <p>
+                    I chose a <b>one-tailed t-test</b> for this metric because the data is continuous and, logically, the hope is that a better design will decrease the time on the page.
+                    There are 25.46520169 degrees of freedom, resulting in a t-score of 8.87275, and a p-value of 1.4e-9. The t-score tells use that the sample mean is about 9 standard deviations from the population mean. 
+                    The p-value is nearly 0, indicating that the probability of observing the sample data under the assumption that the time on the page isn't affected by the version of the site is extremely small. 
+                    Thus, this the time on the page is statistically signicifant and we <b>reject the null hypothesis</b>.
+                </p>
 
                 <h3>Time to first click</h3>
+                <p>
+                    I chose a <b>two-tailed t-test</b> for this metric because the data in continuous and I wanted to know if there is a difference in either direction of first click rate among 
+                    the versions of the site. I chose two-tailed specifically becuase I'm not certain if a better-designed UI will cause a slower time to first click, since there will hopefully 
+                    be no misclicks, or if the time will be quicker to first click because users can more immediately complete their task. 
+                    <br><br>
+                     There are 25.07203193 degrees of freedom, with a t-score of -5.630290425 and a p-value of 7.295e-7. 
+                     The negative t-score indicates that the mean time to first click in the version B sample is lower than the mean time to first click we'd expect assuming the null hypothesis is true.
+                     The p-value indicates that there is a near-zero chance of observing the sample data under the assumption that the null hypothesis is true. 
+                     Again, p is smaller than the alpha value of 0.05, so we <b>reject the null hypothesis</b> and conclude that this metric is statistically significant.
+                </p>
+
+                <h2>Summary Statistics</h2>
+                <h3>Misclick rate</h3>
+                Note that the misclick rate is a boolean statistic since each participant can have a datapoint of TRUE or FALSE. Therefore, the typical summary statistics of mean and variance don't apply.
+                 Rather, we can look at the raw data if we want to see if the results of the chi-squares test make sense. Half of all of the participants who saw version A misclicked, with 12 misclicking among the 
+                 24 total participants. Version B participants had a much lower misclick rate, with 3 of 21 participants misclicking the page. This data shows a stark difference between a misclick rate of 0.5 for version A  
+                 versus 0.143 for version B. This data observation supports the chi-squares test results to reject the null hypothesis and have confidence that version B users have a smaller misclick rate than users of version A.
+
+                <h3>Time on Page</h3>
+                This metric measures continuous data, so we can look at the mean and variances of the time participants spent on version A and version B of the page. Participants spent a mean time of 
+                about 36.24 seconds on version A of the page and a mean time of about 9.05 seconds on version B. This data illustrates a decrease in the average time spent on the page when version B is used. 
+                It is notable, however, that participants performed the task on version A prior to using version B, so the data is not necessarily independent and some of the decreased time may be due to 
+                participants learning from completing the task on version A first. The variance of version B is also much lower than version A. The variance observed in version A participants is about 21.23 seconds, and the variance observed in version B 
+                is about 10.03 seconds. This tells us that there is more variation in the time participants spent on version A of the page than version B.
+
+                <h3>Time to first click</h3>
+                Again, this is continuous data so we can look at the mean and variances of the time elapsed before participants clicked the page for the first time. The average time it took version A participants to make their first click was 
+                about 14.48 seconds, and the average time observed in version B participants was about 4.6 seconds. The difference in these mean times indicates that the participants made their first click much quicker on version B, which makes sense in the context of 
+                our t-test finding this metric statistically significant. The variances also differ with version A participants having a variance of about 70 seconds and version B participants having a much smaller variance of about 
+                2.8 seconds. This tells us that version A participants differed much more in their time to first click than version B, which would make sense if the interface is more confusing to navigate.
+                Note that units are in milliseconds.
 
             </div>
 
             <div id="Conclusion" class="assignment-segment">
                 <h2>Conclusion</h2>
+                I was surprised that I was able to reject each of my null hypotheses and find statistcally significant evidence that version B of the site improved user efficiency as measured by mislick rate, time spent of the page, and time to first click in each of the cases I analyzed. 
+                Considering that there isn't much styling difference between versions A and B of the page, I didn't expect my finding to be significant. This project taught me that even a little UI improvement goes a long way in terms of 
+                usability for users!
             </div>
         </div>
